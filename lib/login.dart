@@ -25,48 +25,75 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: Colors.white,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.70,
-              child: Center(
-                child: Container(
-                  margin: EdgeInsets.all(12),
-                  child: Form(
-                    key: _formkey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          "Login",
+              height: MediaQuery.of(context).size.height,
+              child: Container(
+                margin: EdgeInsets.all(12),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 18),
+                        child: Text(
+                          "Welcome,",
+                          textAlign: TextAlign.left,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 40,
+                            color: Color(0xFF07919D),
+                            fontSize: 32,
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Lets get started",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.4),
+                            fontSize: 16,
+                          ),
                         ),
-                        TextFormField(
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Email',
+                            hintStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black.withOpacity(0.2)),
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 8.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
+                              borderSide:
+                                  new BorderSide(width: 2, color: Colors.black),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  width: 2,
+                                  color: Colors.black.withOpacity(0.1)),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
                           ),
                           validator: (value) {
@@ -86,10 +113,13 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           keyboardType: TextInputType.emailAddress,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
                           controller: passwordController,
                           obscureText: _isObscure3,
                           decoration: InputDecoration(
@@ -97,6 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                                 icon: Icon(_isObscure3
                                     ? Icons.visibility
                                     : Icons.visibility_off),
+                                color: Colors.black.withOpacity(0.1),
                                 onPressed: () {
                                   setState(() {
                                     _isObscure3 = !_isObscure3;
@@ -105,16 +136,23 @@ class _LoginPageState extends State<LoginPage> {
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Password',
+                            hintStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black.withOpacity(0.2)),
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
+                              borderSide:
+                                  new BorderSide(width: 2, color: Colors.black),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(10),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  width: 2,
+                                  color: Colors.black.withOpacity(0.1)),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
                           ),
                           validator: (value) {
@@ -133,15 +171,43 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           keyboardType: TextInputType.emailAddress,
                         ),
-                        SizedBox(
-                          height: 20,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      new GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Register(),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: new Text(
+                            "Forgot Password?",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black.withOpacity(0.75),
+                              fontSize: 14,
+                            ),
+                          ),
                         ),
-                        MaterialButton(
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Center(
+                        child: MaterialButton(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
+                                  BorderRadius.all(Radius.circular(15.0))),
                           elevation: 5.0,
-                          height: 40,
+                          height: 50,
+                          minWidth: 300,
                           onPressed: () {
                             setState(() {
                               visible = true;
@@ -150,102 +216,139 @@ class _LoginPageState extends State<LoginPage> {
                                 emailController.text, passwordController.text);
                           },
                           child: Text(
-                            "Login",
+                            "Log In",
                             style: TextStyle(
-                              fontSize: 20,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
+                          ),
+                          color: Color(0xFF07919D),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          new Text(
+                            "Do not have an account? ",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black.withOpacity(0.4),
+                              fontSize: 14,
                             ),
                           ),
-                          color: Colors.white,
+                          new GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Register(),
+                                ),
+                              );
+                            },
+                            child: new Text(
+                              "Sign Up",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF07919D),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 45,
+                      ),
+                      Center(
+                        child: new Text(
+                          "Or continue with",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black.withOpacity(0.75),
+                            fontSize: 14,
+                          ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Visibility(
-                            maintainSize: true,
-                            maintainAnimation: true,
-                            maintainState: true,
-                            visible: visible,
-                            child: Container(
-                                child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ))),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          new MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0))),
+                            elevation: 0,
+                            height: 50,
+                            minWidth: 140,
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Register(),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.g_mobiledata_sharp,
+                                  size: 35,
+                                  color: Colors.red,
+                                ),
+                                Text(
+                                  "Google",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            color: Colors.white,
+                          ),
+                          new MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0))),
+                            elevation: 0,
+                            height: 50,
+                            minWidth: 140,
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Register(),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.facebook_sharp,
+                                  size: 25,
+                                  color: Colors.blue,
+                                ),
+                                Text(
+                                  " Facebook",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            ),
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.white,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    MaterialButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                      ),
-                      elevation: 5.0,
-                      height: 40,
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Register(),
-                          ),
-                        );
-                      },
-                      color: Colors.blue[900],
-                      child: Text(
-                        "Register Now",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "Made by",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "WEB",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.blue[900],
-                          ),
-                        ),
-                        Text(
-                          "FUN",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.yellowAccent[400],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ),
               ),
             ),

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\Smart-App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\arjun\\.gradle\\caches\\transforms-3\\dabcda68851483edc65f4d3af38ff3f1\\transformed\\core-1.6.0\\res\\values\\values.xml",
@@ -76,6 +76,25 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\Smart-App\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,832",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "483,998"
+                    },
+                    "to": {
+                        "startLines": "137,142",
+                        "startColumns": "4,4",
+                        "startOffsets": "9994,10302",
+                        "endLines": "141,144",
+                        "endColumns": "12,12",
+                        "endOffsets": "10297,10466"
+                    }
+                },
+                {
                     "source": "C:\\Users\\arjun\\.gradle\\caches\\transforms-3\\36a45b2abb854eca36c578fbec6ed4df\\transformed\\jetified-window-1.0.0-beta04\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,19,23,34,51",
@@ -95,7 +114,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "source": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\Smart-App\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -109,25 +128,6 @@
                         "startOffsets": "8973,9333,9416,9520,9630,9750,9848",
                         "endColumns": "144,82,103,109,119,97,74",
                         "endOffsets": "9113,9411,9515,9625,9745,9843,9918"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,832",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "483,998"
-                    },
-                    "to": {
-                        "startLines": "137,142",
-                        "startColumns": "4,4",
-                        "startOffsets": "9994,10302",
-                        "endLines": "141,144",
-                        "endColumns": "12,12",
-                        "endOffsets": "10297,10466"
                     }
                 }
             ]
