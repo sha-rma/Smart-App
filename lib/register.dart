@@ -29,65 +29,82 @@ class _RegisterState extends State<Register> {
   bool _isObscure2 = true;
   File? file;
   var options = [
-    'Student',
-    'Teacher',
+    'Patient',
+    'Doctor',
   ];
-  var _currentItemSelected = "Student";
-  var rool = "Student";
+  var _currentItemSelected = "Patient";
+  var rool = "Patient";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[900],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: Colors.white,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
-              child: SingleChildScrollView(
-                child: Container(
-                  margin: EdgeInsets.all(12),
-                  child: Form(
-                    key: _formkey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 80,
-                        ),
-                        Text(
-                          "Register Now",
+              child: Container(
+                margin: EdgeInsets.all(12),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 18),
+                        child: Text(
+                          "Sign Up,",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontSize: 40,
+                            color: Color(0xFF07919D),
+                            fontSize: 32,
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
+                      ),
+                      SizedBox(height: 5),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(
+                          "Enter your details below",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black.withOpacity(0.4),
+                            fontSize: 16,
+                          ),
                         ),
-                        SizedBox(
-                          height: 50,
-                        ),
-                        TextFormField(
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Email',
+                            hintStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black.withOpacity(0.2)),
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 8.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide:
+                                  new BorderSide(width: 2, color: Colors.black),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  width: 2,
+                                  color: Colors.black.withOpacity(0.1)),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
                           ),
                           validator: (value) {
@@ -105,10 +122,13 @@ class _RegisterState extends State<Register> {
                           onChanged: (value) {},
                           keyboardType: TextInputType.emailAddress,
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
                           obscureText: _isObscure,
                           controller: passwordController,
                           decoration: InputDecoration(
@@ -116,6 +136,7 @@ class _RegisterState extends State<Register> {
                                 icon: Icon(_isObscure
                                     ? Icons.visibility_off
                                     : Icons.visibility),
+                                color: Colors.black.withOpacity(0.1),
                                 onPressed: () {
                                   setState(() {
                                     _isObscure = !_isObscure;
@@ -124,16 +145,23 @@ class _RegisterState extends State<Register> {
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Password',
+                            hintStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black.withOpacity(0.2)),
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide:
+                                  new BorderSide(width: 2, color: Colors.black),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  width: 2,
+                                  color: Colors.black.withOpacity(0.1)),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
                           ),
                           validator: (value) {
@@ -149,10 +177,13 @@ class _RegisterState extends State<Register> {
                           },
                           onChanged: (value) {},
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: TextFormField(
                           obscureText: _isObscure2,
                           controller: confirmpassController,
                           decoration: InputDecoration(
@@ -160,6 +191,7 @@ class _RegisterState extends State<Register> {
                                 icon: Icon(_isObscure2
                                     ? Icons.visibility_off
                                     : Icons.visibility),
+                                color: Colors.black.withOpacity(0.1),
                                 onPressed: () {
                                   setState(() {
                                     _isObscure2 = !_isObscure2;
@@ -168,16 +200,23 @@ class _RegisterState extends State<Register> {
                             filled: true,
                             fillColor: Colors.white,
                             hintText: 'Confirm Password',
+                            hintStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black.withOpacity(0.2)),
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide:
+                                  new BorderSide(width: 2, color: Colors.black),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(
+                                  width: 2,
+                                  color: Colors.black.withOpacity(0.1)),
+                              borderRadius: new BorderRadius.circular(15),
                             ),
                           ),
                           validator: (value) {
@@ -190,115 +229,118 @@ class _RegisterState extends State<Register> {
                           },
                           onChanged: (value) {},
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Rool : ",
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Type of account: ",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          DropdownButton<String>(
+                            dropdownColor: Colors.white,
+                            underline: Container(),
+                            borderRadius: BorderRadius.circular(15),
+                            isDense: false,
+                            isExpanded: false,
+                            iconEnabledColor: Colors.black,
+                            focusColor: Colors.black,
+                            items: options.map((String dropDownStringItem) {
+                              return DropdownMenuItem<String>(
+                                value: dropDownStringItem,
+                                child: Text(
+                                  dropDownStringItem,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (newValueSelected) {
+                              setState(() {
+                                _currentItemSelected = newValueSelected!;
+                                rool = newValueSelected;
+                              });
+                            },
+                            value: _currentItemSelected,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          MaterialButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15.0))),
+                            elevation: 5.0,
+                            height: 50,
+                            minWidth: 300,
+                            onPressed: () {
+                              setState(() {
+                                showProgress = true;
+                              });
+                              signUp(emailController.text,
+                                  passwordController.text, rool);
+                            },
+                            child: Text(
+                              "Register",
                               style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w800,
                                 color: Colors.white,
                               ),
                             ),
-                            DropdownButton<String>(
-                              dropdownColor: Colors.blue[900],
-                              isDense: true,
-                              isExpanded: false,
-                              iconEnabledColor: Colors.white,
-                              focusColor: Colors.white,
-                              items: options.map((String dropDownStringItem) {
-                                return DropdownMenuItem<String>(
-                                  value: dropDownStringItem,
-                                  child: Text(
-                                    dropDownStringItem,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (newValueSelected) {
-                                setState(() {
-                                  _currentItemSelected = newValueSelected!;
-                                  rool = newValueSelected;
-                                });
-                              },
-                              value: _currentItemSelected,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0))),
-                              elevation: 5.0,
-                              height: 40,
-                              onPressed: () {
-                                CircularProgressIndicator();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              color: Colors.white,
-                            ),
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0))),
-                              elevation: 5.0,
-                              height: 40,
-                              onPressed: () {
-                                setState(() {
-                                  showProgress = true;
-                                });
-                                signUp(emailController.text,
-                                    passwordController.text, rool);
-                              },
-                              child: Text(
-                                "Register",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "WEBFUN",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.yellowAccent[400],
+                            color: Color(0xFF07919D),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          new MaterialButton(
+                            shape: CircleBorder(),
+                            elevation: 3,
+                            height: 50,
+                            minWidth: 50,
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginPage(),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_back_rounded,
+                                  size: 35,
+                                  color: Color(0xFF07919D),
+                                ),
+                              ],
+                            ),
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
