@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\Smart-App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "C:\\Users\\gauth\\OneDrive\\Desktop\\SmartChemoApp\\Smart-App\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\arjun\\Downloads\\Project_S8\\smartapp\\Smart-App\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\gauth\\OneDrive\\Desktop\\SmartChemoApp\\Smart-App\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
