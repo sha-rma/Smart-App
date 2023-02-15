@@ -166,17 +166,127 @@ class _StudentState extends State<Student> {
             //mainAxisAlignment: MainAxisAlignment.start,
             //crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              InkWell(
-                  splashColor: Colors.black,
-                  onTap: () {},
-                  child: Ink.image(
-                      image: NetworkImage('https://i.imgur.com/YQ5Ixni.jpeg'),
-                      height: screenSize.height / 5,
-                      width: screenSize.width / 5,
-                      fit: BoxFit.cover,
-                      child: Text(
-                        'sdvsdv',
-                      ))),
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                // child: InkWell(
+                //     //customBorder: CircleBorder(),
+                //     //borderRadius: BorderRadius.circular(25.0),
+                //     customBorder: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(16)),
+                //     splashColor: Color(0xFF07919D),
+                //     onTap: () {},
+                //     child: Ink.image(
+                //         image: NetworkImage('https://i.imgur.com/YQ5Ixni.jpeg'),
+                //         height: screenSize.height / 4,
+                //         width: screenSize.width / 1.2,
+                //         fit: BoxFit.fill,
+                //         child: Text(
+                //           'sdvsdv',
+                //         ))),
+                child: Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                    // child: ClipRRect(
+                    //     borderRadius: BorderRadius.circular(15),
+                    //     child: Image.network('https://i.imgur.com/YQ5Ixni.jpeg',
+                    //         fit: BoxFit.fill,
+                    //         width: screenSize.width / 1.2,
+                    //         height: screenSize.height / 49)
+                    //         ),
+                    child: GestureDetector(
+                      onTap: () {
+                        logout(context);
+                      },
+                      // child: Image.network('https://i.imgur.com/YQ5Ixni.jpeg',
+                      //     fit: BoxFit.cover,
+                      //     height: screenSize.height / 4,
+                      //     width: screenSize.width / 1.2)),
+                      child: Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.bottomCenter,
+                            fit: StackFit.loose,
+                            children: [
+                              Container(
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                        'https://i.imgur.com/YQ5Ixni.jpeg',
+                                        fit: BoxFit.fill,
+                                        color: Colors.white.withOpacity(0.7),
+                                        colorBlendMode: BlendMode.modulate,
+                                        width: screenSize.width / 1.2,
+                                        height: screenSize.height / 4)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 145),
+                                child: Text("Daily Questionnaire",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  bottom: 95,
+                                ),
+                                child: Text(
+                                    "Click on \"Start\" to complete today's \n questionnaire",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15)),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 22),
+                                child: MaterialButton(
+                                  minWidth: screenSize.width / 1.5,
+                                  height: screenSize.height / 14,
+                                  color: Color(0xFF07919D),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(16.0)),
+                                  onPressed: () {},
+                                  child: Text(
+                                    "Start",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(23.0),
+                            child: Stack(
+                              alignment: Alignment.bottomCenter,
+                              fit: StackFit.loose,
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                        'https://i.imgur.com/TdEEtZy.jpg',
+                                        fit: BoxFit.fill,
+                                        width: screenSize.width / 1.2,
+                                        height: screenSize.height / 8)),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      bottom: 35, right: 205),
+                                  child: Text("History",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+              )
             ],
           ),
         ), //Center(
@@ -206,7 +316,7 @@ class _StudentState extends State<Student> {
                 color: Color(0xFF07919D),
                 size: 30,
               ),
-              label: 'Business',
+              label: 'Chat',
             ),
             BottomNavigationBarItem(
               icon: Icon(
@@ -214,7 +324,7 @@ class _StudentState extends State<Student> {
                 color: Color(0xFF07919D),
                 size: 30,
               ),
-              label: 'School',
+              label: 'Profile',
             ),
           ],
           showSelectedLabels: false,
