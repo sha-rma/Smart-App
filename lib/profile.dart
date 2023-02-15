@@ -13,68 +13,79 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("Profile"),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         logout(context);
-      //       },
-      //       icon: Icon(
-      //         Icons.logout,
-      //       ),
-      //     )
-      //   ],
-      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xFF07919D),
+        toolbarHeight: screenSize.height / 4.545,
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.account_circle_rounded,
+              size: screenSize.height / 10,
+            ),
+            RichText(
+              textAlign: TextAlign.left,
+              text: TextSpan(
+                text: ' Patiet Name',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: <Widget>[
             Container(
-              color: Color(0xFF07919D),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 210),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40.0),
-                      topLeft: Radius.circular(40.0),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Center(
-                        child: MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0))),
-                          elevation: 5.0,
-                          height: 50,
-                          minWidth: 300,
-                          onPressed: () {
-                            logout(context);
-                          },
-                          child: Text(
-                            "Log Out",
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white),
-                          ),
-                          color: Color(0xFF07919D),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 75,
-                      )
-                    ],
-                  ),
+              decoration: BoxDecoration(
+                color: Color(0xFF07919D),
+                // color: Colors.red
+              ),
+              height: screenSize.height / 9,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              height: screenSize.height / 1.27,
+              width: screenSize.width,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(40.0),
+                  topLeft: Radius.circular(40.0),
                 ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                    elevation: 5.0,
+                    height: screenSize.height / 16.67,
+                    minWidth: screenSize.width / 1.8,
+                    onPressed: () {
+                      logout(context);
+                    },
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white),
+                    ),
+                    color: Color(0xFF07919D),
+                  ),
+                ],
               ),
             )
           ],
