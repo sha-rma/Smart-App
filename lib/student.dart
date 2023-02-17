@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_appbar/calendar_appbar.dart';
 import 'package:intl/intl.dart';
+import 'package:smartapp/questionnairePage.dart';
 
 import 'login.dart';
 
@@ -195,7 +196,10 @@ class _StudentState extends State<Student> {
                   //         ),
                   child: GestureDetector(
                     onTap: () {
-                      logout(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Questionnaire()));
                     },
                     // child: Image.network('https://i.imgur.com/YQ5Ixni.jpeg',
                     //     fit: BoxFit.cover,
@@ -244,7 +248,13 @@ class _StudentState extends State<Student> {
                                 color: Color(0xFF07919D),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(16.0)),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Questionnaire()));
+                                },
                                 child: Text(
                                   "Start",
                                   style: TextStyle(
