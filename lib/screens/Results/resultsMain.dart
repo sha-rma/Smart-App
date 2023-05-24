@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smartapp/screens/Results/resultsBody.dart';
-import 'resultsAppBar.dart';
 
+// ignore: must_be_immutable
 class Results extends StatefulWidget {
-  const Results({super.key});
+  var details;
+  Results({required this.details});
 
   @override
   State<Results> createState() => _ResultsState();
@@ -12,10 +13,13 @@ class Results extends StatefulWidget {
 class _ResultsState extends State<Results> {
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+    // var screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: buildappbar(screenSize: screenSize),
-      body: ResultsBody(),
+      // appBar: buildappbar(screenSize: screenSize),
+      body: ResultsBody(
+        details: widget.details,
+      ),
     );
   }
 }

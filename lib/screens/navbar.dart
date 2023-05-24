@@ -5,6 +5,7 @@ import 'Doctor_profile/profileMain.dart';
 import 'Patient_profile/profileMain.dart';
 import 'home/doctor/doctorMain.dart';
 
+// ignore: must_be_immutable
 class Navig extends StatefulWidget {
   bool isdoctor;
   Navig({required this.isdoctor});
@@ -22,8 +23,8 @@ class _NavigState extends State<Navig> {
       Chat(),
       widget.isdoctor ? DoctorProfile() : PatientProfile(),
     ];
-    var wid = MediaQuery.of(context).size.width;
-    var ht = MediaQuery.of(context).size.height;
+    // var wid = MediaQuery.of(context).size.width;
+    // var ht = MediaQuery.of(context).size.height;
     return Scaffold(
         body: _page[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(

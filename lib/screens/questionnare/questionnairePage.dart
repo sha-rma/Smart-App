@@ -52,14 +52,19 @@ class _QuestionnaireState extends State<Questionnaire> {
   }
 
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF07919D),
         title: Text("Questionnaire"),
+        toolbarHeight: screenSize.height * 0.15,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: screenSize.height * 0.02,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -67,22 +72,42 @@ class _QuestionnaireState extends State<Questionnaire> {
                 padding: const EdgeInsets.only(top: 16, left: 16),
                 child: Text(
                   _questionHeadings[_questionSlider],
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  speak(_questions[_questionSlider]);
-                },
-                child: const Icon(Icons.volume_up),
+              Padding(
+                padding: EdgeInsets.only(
+                    right: screenSize.width * 0.07,
+                    top: screenSize.height * 0.02),
+                child: SizedBox(
+                  height: screenSize.height * 0.08,
+                  width: screenSize.height * 0.08,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      speak(_questions[_questionSlider]);
+                    },
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        screenSize.height * 0.08))),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Color(0xFF07919D))),
+                    child: Icon(Icons.volume_up),
+                  ),
+                ),
               )
             ],
+          ),
+          SizedBox(
+            height: screenSize.height * 0.02,
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8, left: 16),
             child: Text(
               _questions[_questionSlider],
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 20),
             ),
           ),
           Padding(

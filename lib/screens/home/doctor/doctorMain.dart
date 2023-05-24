@@ -14,7 +14,7 @@ class _TeacherState extends State<Teacher> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: buildappbar(screenSize: screenSize),
+      appBar: buildappbar(screenSize: screenSize, context: context),
       body: DoctorBody(),
     );
   }
