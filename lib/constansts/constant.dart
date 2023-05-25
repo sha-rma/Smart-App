@@ -175,7 +175,7 @@ class _SeverePatientsState extends State<SeverePatients> {
                                     icon: Icon(Icons.chat_rounded)),
                                 IconButton(
                                     onPressed: () {
-                                      _launchUrl(widget.details['phone']);
+                                      LaunchUrl(widget.details['phone']);
                                     },
                                     icon: Icon(Icons.phone_rounded)),
                                 IconButton(
@@ -215,7 +215,7 @@ class _SeverePatientsState extends State<SeverePatients> {
   }
 }
 
-Future<void> _launchUrl(String phoneNumber) async {
+Future<void> LaunchUrl(String phoneNumber) async {
   // final phoneNumber = '9946513189'; // Replace with the desired phone number
   final phoneUrl = 'tel:$phoneNumber';
   final Uri _url = Uri.parse(phoneUrl);

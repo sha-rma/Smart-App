@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HistoryBody extends StatefulWidget {
   const HistoryBody({Key? key}) : super(key: key);
@@ -12,15 +10,16 @@ class HistoryBody extends StatefulWidget {
 class _HistoryBodyState extends State<HistoryBody> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Work In Progress"),
-          ],
+    return SingleChildScrollView(
+        child: Stack(children: <Widget>[
+      Container(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 250),
+            child: Text("Work In Progress"),
+          ),
         ),
-      ),
-    );
+      )
+    ]));
   }
 }

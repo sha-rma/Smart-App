@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../../constansts/constant.dart';
 import '../chat/chat.dart';
+// import '../chat/chat.dart';
 
 // ignore: must_be_immutable
 class ResultsBody extends StatefulWidget {
@@ -46,13 +47,10 @@ class _ResultsBodyState extends State<ResultsBody> {
                       EdgeInsets.fromLTRB(screenSize.width * 0.55, 0, 0, 0),
                   child: IconButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Chat()));
+                        LaunchUrl(widget.details['phone']);
                       },
                       icon: Icon(
-                        Icons.chat_rounded,
+                        Icons.phone_rounded,
                         size: 25,
                         color: Colors.white,
                       )),
@@ -84,8 +82,41 @@ class _ResultsBodyState extends State<ResultsBody> {
                     border: Border.all(
                         width: 2, color: Colors.black.withOpacity(0.5))),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text("Work In Progress")],
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Chat()));
+                      },
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(bottom: screenSize.height * 0.05),
+                        child: Container(
+                            height: screenSize.height * 0.06,
+                            width: screenSize.width * 0.455,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF07919D),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Message  ',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ),
+                                Icon(
+                                  Icons.chat_rounded,
+                                  color: Colors.white,
+                                  size: 25,
+                                ),
+                              ],
+                            )),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
