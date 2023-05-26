@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smartapp/screens/chat/chatInbox.dart';
 import '../screens/Results/resultsMain.dart';
-import '../screens/chat/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 TextField reusableTextField(String text, bool isPasswordType) {
@@ -170,7 +170,7 @@ class _SeverePatientsState extends State<SeverePatients> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Chat()));
+                                              builder: (context) => ChatInboxScreen()));
                                     },
                                     icon: Icon(Icons.chat_rounded)),
                                 IconButton(

@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:smartapp/screens/chat/chatInbox.dart';
 import 'package:smartapp/screens/home/patient/patientMain.dart';
-import 'package:smartapp/screens/chat/chat.dart';
 import 'Doctor_profile/profileMain.dart';
 import 'Patient_profile/profileMain.dart';
 import 'home/doctor/doctorMain.dart';
@@ -20,7 +21,7 @@ class _NavigState extends State<Navig> {
   Widget build(BuildContext context) {
     List<Widget> _page = [
       widget.isdoctor ? Teacher() : Student(),
-      Chat(),
+      ChatInboxScreen(),
       widget.isdoctor ? DoctorProfile() : PatientProfile(),
     ];
     // var wid = MediaQuery.of(context).size.width;

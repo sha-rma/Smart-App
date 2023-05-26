@@ -42,6 +42,8 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   url_launcher: ^6.0.12
   table_calendar: ^3.0.8
+  image_picker: ^0.8.7+5
+  firebase_storage: ^11.2.1
 
 dev_dependencies:
   flutter_test:

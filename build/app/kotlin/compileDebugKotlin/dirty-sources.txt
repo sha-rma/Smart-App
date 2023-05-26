@@ -1,1 +1,0 @@
-C:\Users\arjun\Downloads\S8_Project\Smart-App\android\app\src\main\kotlin\com\example\smartapp\MainActivity.kt
