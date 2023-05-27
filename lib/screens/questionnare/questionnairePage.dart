@@ -140,6 +140,8 @@ class _QuestionnaireState extends State<Questionnaire> {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
             child: Slider(
+              activeColor:  const Color(0xFF07919D),
+              secondaryActiveColor:  Color.fromARGB(255, 15, 231, 251),
               value: _sliderValue.toDouble(),
               min: 0,
               max: 4,
