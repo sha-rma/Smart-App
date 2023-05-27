@@ -370,7 +370,7 @@ class _LoginPageState extends State<LoginPage> {
             context,
             MaterialPageRoute(
               builder: (context) => Navig(
-                isdoctor: true,
+                isdoctor: true
               ),
             ),
           );
@@ -379,7 +379,7 @@ class _LoginPageState extends State<LoginPage> {
             context,
             MaterialPageRoute(
               builder: (context) => Navig(
-                isdoctor: false,
+                isdoctor: false
               ),
             ),
           );

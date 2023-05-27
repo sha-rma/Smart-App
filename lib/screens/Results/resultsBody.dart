@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smartapp/screens/chat/chatInbox.dart';
 import '../../constansts/constant.dart';
-import '../chat/chat.dart';
 // import '../chat/chat.dart';
 
 // ignore: must_be_immutable
@@ -87,7 +87,7 @@ class _ResultsBodyState extends State<ResultsBody> {
                     MaterialButton(
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Chat()));
+                            MaterialPageRoute(builder: (context) => ChatInboxScreen()));
                       },
                       child: Padding(
                         padding:
