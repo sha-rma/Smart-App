@@ -596,7 +596,6 @@ class _RegisterState extends State<Register> {
       ref.doc(user.uid).set({'pList': []}, SetOptions(merge: true));
       ref.doc(user.uid).set({'dList': []}, SetOptions(merge: true));
       ref.doc(user.uid).set({'sList': []}, SetOptions(merge: true));
-      ref.doc(user.uid).set({'dList': []}, SetOptions(merge: true));
     } else {
       ref.doc(user.uid).set({'isSevere': false}, SetOptions(merge: true));
       ref.doc(user.uid).set({'pList': []}, SetOptions(merge: true));
