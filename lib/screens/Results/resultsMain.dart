@@ -3,8 +3,8 @@ import 'package:smartapp/screens/Results/resultsBody.dart';
 
 // ignore: must_be_immutable
 class Results extends StatefulWidget {
-  var details;
-  Results({required this.details});
+  var details, answers;
+  Results({required this.details, required this.answers});
 
   @override
   State<Results> createState() => _ResultsState();
@@ -17,9 +17,7 @@ class _ResultsState extends State<Results> {
 
     return Scaffold(
       // appBar: buildappbar(screenSize: screenSize),
-      body: ResultsBody(
-        details: widget.details,
-      ),
+      body: ResultsBody(details: widget.details, answers: widget.answers),
     );
   }
 }

@@ -170,7 +170,8 @@ class _SeverePatientsState extends State<SeverePatients> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => ChatInboxScreen()));
+                                              builder: (context) =>
+                                                  ChatInboxScreen()));
                                     },
                                     icon: Icon(Icons.chat_rounded)),
                                 IconButton(
@@ -206,6 +207,20 @@ class _SeverePatientsState extends State<SeverePatients> {
                   MaterialPageRoute(
                       builder: (context) => Results(
                             details: widget.details,
+                            answers: [
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0,
+                              4.0
+                            ],
                           )));
             },
           ),

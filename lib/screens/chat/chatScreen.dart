@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,8 +23,6 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
   final _firestore = FirebaseFirestore.instance;
   final _storage = FirebaseStorage.instance;
   final _picker = ImagePicker();
-
-
 
   late User _currentUser;
   String _messageText = '';
@@ -55,7 +55,11 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
   void sendMessage() async {
     if (_messageText.isNotEmpty) {
       // Create a new message document with the sender, receiver, text, timestamp and type
-      await _firestore.collection('messages').doc(getChatId()).collection('chat').add({
+      await _firestore
+          .collection('messages')
+          .doc(getChatId())
+          .collection('chat')
+          .add({
         'sender': _currentUser.email,
         'receiver': widget.email,
         'text': _messageText,
@@ -82,7 +86,11 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
       // Get the download URL of the image
       String downloadURL = await _storage.ref(fileName).getDownloadURL();
       // Create a new message document with the sender, receiver, url, timestamp and type
-      await _firestore.collection('messages').doc(getChatId()).collection('chat').add({
+      await _firestore
+          .collection('messages')
+          .doc(getChatId())
+          .collection('chat')
+          .add({
         'sender': _currentUser.email,
         'receiver': widget.email,
         'url': downloadURL,
@@ -97,7 +105,7 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-    backgroundColor: const Color(0xFF07919D),
+        backgroundColor: const Color(0xFF07919D),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -155,7 +163,8 @@ class _ChatMessageScreenState extends State<ChatMessageScreen> {
                   }
                   return ListView(
                     reverse: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 20),
                     children: messageWidgets,
                   );
                 },
@@ -216,15 +225,19 @@ class TextMessage extends StatelessWidget {
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color:
-              isMe ?const Color(0xFF07919D): Colors.grey.shade300,
-          borderRadius:
-              isMe ? const BorderRadius.only(topLeft: Radius.circular(15), bottomLeft : Radius.circular(15), bottomRight : Radius.circular(15)) : const BorderRadius.only(topRight : Radius.circular(15), bottomLeft : Radius.circular(15), bottomRight : Radius.circular(15)),
+          color: isMe ? const Color(0xFF07919D) : Colors.grey.shade300,
+          borderRadius: isMe
+              ? const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15))
+              : const BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
         ),
-        child:
-            Text(text, style:
-                TextStyle(color:
-                isMe ? Colors.white : Colors.black)),
+        child: Text(text,
+            style: TextStyle(color: isMe ? Colors.white : Colors.black)),
       ),
     );
   }
@@ -241,15 +254,12 @@ class ImageMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment:
-          isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child:
-          Container(margin:
-              const EdgeInsets.all(8), child:
-              ClipRRect(borderRadius:
-                  BorderRadius.circular(15), child:
-                  Image.network(url))),
+      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+          margin: const EdgeInsets.all(8),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(url))),
     );
   }
 }
-

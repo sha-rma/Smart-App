@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smartapp/screens/chat/chatInbox.dart';
 import 'package:smartapp/screens/home/patient/patientMain.dart';

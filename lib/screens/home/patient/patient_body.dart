@@ -106,7 +106,8 @@ class _PatientBodyState extends State<PatientBody> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Questionnaire()));
+                              builder: (context) =>
+                                  Questionnaire(details: {})));
                     },
                     child: Column(
                       children: [
@@ -155,8 +156,9 @@ class _PatientBodyState extends State<PatientBody> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              Questionnaire()));
+                                          builder: (context) => Questionnaire(
+                                                details: {},
+                                              )));
                                 },
                                 child: Text(
                                   "Start",
