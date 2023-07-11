@@ -1,13 +1,10 @@
 // ignore_for_file: must_be_immutable
 
-import 'dart:convert';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:sklite/SVM/SVM.dart';
-import 'package:sklite/utils/io.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import "package:dio/dio.dart";
 
 class Questionnaire extends StatefulWidget {
   var details;
@@ -18,10 +15,8 @@ class Questionnaire extends StatefulWidget {
 }
 
 class _QuestionnaireState extends State<Questionnaire> {
-  late SVC svc;
-
   int _questionSlider = 0;
-  double _sliderValue = 0;
+  int _sliderValue = 0;
   final FlutterTts flutterTts = FlutterTts();
   speak(String text) async {
     await flutterTts.setLanguage("en-US");
@@ -59,10 +54,10 @@ class _QuestionnaireState extends State<Questionnaire> {
   ];
 
   List<Map<String, dynamic>> _emojiValues = [
-    {'emoji': '😊', 'value': 1.0},
-    {'emoji': '😐', 'value': 2.0},
-    {'emoji': '🙁', 'value': 3.0},
-    {'emoji': '😢', 'value': 4.0},
+    {'emoji': '😊', 'value': 1},
+    {'emoji': '😐', 'value': 2},
+    {'emoji': '🙁', 'value': 3},
+    {'emoji': '😢', 'value': 4},
   ];
 
   List<double> answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -70,7 +65,7 @@ class _QuestionnaireState extends State<Questionnaire> {
 
   bool Severe = false;
 
-  void tranform() {
+  Future<void> tranform() async {
     input[0] = (answers[0] + answers[1] + answers[2]) / 3;
     input[1] = (answers[3] + answers[4]) / 2;
     input[2] = (answers[5] + answers[6]) / 2;
@@ -86,10 +81,27 @@ class _QuestionnaireState extends State<Questionnaire> {
       //print("abc\n");
       //print(input[i]);
     }
-    loadModel("assets/model.json").then((x) {
-      svc = SVC.fromMap(json.decode(x));
-    });
-    int a = svc.predict(input);
+    Map<String, num> body = {
+      'a': input[0],
+      'b': input[1],
+      'c': input[2],
+      'd': input[3],
+      'e': input[4],
+      'f': input[5],
+      'g': input[6],
+      'h': input[7],
+    };
+    Response? response;
+    Dio dio = Dio();
+    response = await dio.post("http://gtm961.pythonanywhere.com//predict",
+        data: body,
+        options: Options(contentType: Headers.formUrlEncodedContentType));
+    // loadModel("assets/model.json").then((x) {
+    //   svc = SVC.fromMap(json.decode(x));
+    // });
+    //int a = svc.predict(input);
+    //print(response.data["Class"]);
+    int a = int.parse(response.data["Class"]);
     print(a);
     if (a == 0) {
       Severe = true;
@@ -103,46 +115,10 @@ class _QuestionnaireState extends State<Questionnaire> {
         .collection('users')
         .doc(uid)
         .update({'isSevere': Severe});
-    // var userDoc=FirebaseFirestore.instance
-    // .collection('users')
-    // .doc(uid).collection();
-  }
-
-  void showPopup(BuildContext context, bool isSevere) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Theme(
-          // Use a different theme depending on the value of isSevere
-          data: isSevere
-              ? ThemeData(
-                  primaryColor: Colors.red,
-                  brightness: Brightness.dark,
-                  colorScheme: ColorScheme.fromSwatch()
-                      .copyWith(secondary: Colors.redAccent),
-                )
-              : ThemeData(
-                  primaryColor: Colors.green,
-                  brightness: Brightness.light,
-                  colorScheme: ColorScheme.fromSwatch()
-                      .copyWith(secondary: Colors.greenAccent),
-                ),
-          child: AlertDialog(
-            title: Text(isSevere
-                ? 'You symptoms indicate that you may need to go to the hospital.'
-                : 'Your symptoms are common to the treatment. Please continue doing the questionnair daily'),
-            actions: [
-              TextButton(
-                child: Text('OK'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update({'answers': answers});
   }
 
   @override
@@ -217,9 +193,7 @@ class _QuestionnaireState extends State<Questionnaire> {
                 return GestureDetector(
                   onTap: () {
                     setState(() {
-                      answers[_questionSlider] = item["value"];
                       _sliderValue = item["value"] - 1;
-                      //print(answers[_questionSlider]);
                     });
                   },
                   child: Column(
@@ -227,7 +201,11 @@ class _QuestionnaireState extends State<Questionnaire> {
                       Text(
                         item['emoji'],
                         style: TextStyle(fontSize: 40),
-                      )
+                      ),
+                      Text(
+                        item['value'].toString(),
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                 );
@@ -237,17 +215,14 @@ class _QuestionnaireState extends State<Questionnaire> {
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
             child: Slider(
-              activeColor: const Color(0xFF07919D),
-              secondaryActiveColor: Color.fromARGB(255, 15, 231, 251),
               value: _sliderValue.toDouble(),
               min: 0,
               max: 3,
               divisions: 3,
               onChanged: (double value) {
                 setState(() {
-                  answers[_questionSlider] = value + 1.0;
-                  _sliderValue = value;
-                  //print(answers[_questionSlider]);
+                  answers[_questionSlider] = value.round() + 1.0;
+                  _sliderValue = value.round();
                 });
               },
             ),
@@ -345,9 +320,9 @@ class _QuestionnaireState extends State<Questionnaire> {
                         onPressed: () {
                           setState(() {
                             tranform();
-                            widget.details["isSevere"] = Severe;
-                            // showPopup(context, Severe);
-                            Navigator.pop(context);
+                            Navigator.pop(
+                              context,
+                            );
                           });
                         },
                       ),

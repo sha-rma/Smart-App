@@ -6,7 +6,7 @@ import '../../constansts/constant.dart';
 // ignore: must_be_immutable
 class ResultsBody extends StatefulWidget {
   var details;
-  List<double> answers;
+  List<dynamic> answers;
   ResultsBody({this.details, required this.answers});
 
   @override

@@ -207,20 +207,7 @@ class _SeverePatientsState extends State<SeverePatients> {
                   MaterialPageRoute(
                       builder: (context) => Results(
                             details: widget.details,
-                            answers: [
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0,
-                              4.0
-                            ],
+                            answers: widget.details['answers'],
                           )));
             },
           ),

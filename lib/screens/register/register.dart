@@ -600,6 +600,9 @@ class _RegisterState extends State<Register> {
       ref.doc(user.uid).set({'isSevere': false}, SetOptions(merge: true));
       ref.doc(user.uid).set({'pList': []}, SetOptions(merge: true));
       ref.doc(user.uid).set({'dList': []}, SetOptions(merge: true));
+      ref.doc(user.uid).set({
+        'answers': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }, SetOptions(merge: true));
     }
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
